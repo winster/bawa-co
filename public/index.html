@@ -309,7 +309,7 @@ html,body{
 	left:50%;
 	margin-left:450px;
 	z-index:11;
-	bottom:10%;
+	bottom:2%;
 	cursor:pointer;
 	opacity:1;
 }
@@ -925,13 +925,13 @@ iframe {
 }
 
 #A4a-title-1{
-    position:absolute;
+    /*position:absolute;*/
 	width:100%;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	text-align:left;
 	font-size:16px;
-	height:100px;
+	/*height:100px;*/
 	left:0;
 	color:#474851;
     font-family: 'open_sanssemibold';
@@ -1065,7 +1065,7 @@ textarea {
 	border:1px solid #CCC;
 }
 
-#er-message{text-align:center;font-family: 'open_sanssemibold'; color:#00c1af;font-size:16px; padding-bottom:20px;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
+.er-message{text-align:center;font-family: 'open_sanssemibold'; color:#00c1af;font-size:16px; padding-bottom:20px;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
 }
 
 .glowing-border {
@@ -1217,26 +1217,21 @@ input,textarea {width:258px;}
   <div id="wrapper-cross"></div>
 	<div id="wrapper-menu">
 	
-	    <div class="recent-post text-part-menutab">
-	        <div id="wrapper-A4a" class="wow bounceInRight" data-wow-offset="10">			    	
-			    <div id="A4a-title-1">Want to contact us?<br>
+	    <div class="category-post text-part-menutab">
+		    <div id = "conteneur">			
+	 			<div id="A4a-title-1">Want to contact us?<br>
 			    	<span style="color:#CCC;">Shoot your question right here.</span>
 			    </div>  		        
-		    </div>
-	    </div>
-	    
-		<div class="category-post text-part-menutab">
-    		<div id = "conteneur">			
-	 			<form id="contact" method="post" action="#">
-		 			<div id="er-message"></div>
-	    			<fieldset>
-						<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
-						<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
-						<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+    			<form id="contact1" method="post" action="#">
+		 			<fieldset>
+						<p><input type="text" id="nom1" name="nom" tabindex="1" placeholder="Name*"/></p>
+						<p><input type="email" id="email1" name="email" tabindex="2" placeholder="Email*"/></p>
+						<p><textarea id="message1" name="message" tabindex="3" maxlength="500" placeholder="Your question" cols="30" rows="8"></textarea></p>
 					</fieldset>
 	 
-					<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
+					<div style="text-align:center;"><input type="button" id="envoi1" name="envoi" tabindex="4" value="Send" /></div>
 	  			</form>
+	  			<div id="er-message1" class="er-message"></div>	    			
 	    	</div>
 	    </div>
     
@@ -1454,16 +1449,16 @@ input,textarea {width:258px;}
     
     	<div id = "conteneur">
 	
- 			<form id="contact" method="post" action="#">
-	 				<div id="er-message"></div>
-    			<fieldset>
-					<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
-					<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
-					<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+ 			<form id="contact2" method="post" action="#">
+	 			<fieldset>
+					<p><input type="text" id="nom2" name="nom" tabindex="5" placeholder="Name*"/></p>
+					<p><input type="email" id="email2" name="email" tabindex="6" placeholder="Email*"/></p>
+					<p><textarea id="message2" name="message" maxlength="500" placeholder="Comment" tabindex="7" cols="30" rows="8"></textarea></p>
 				</fieldset>
  
-				<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
+				<div style="text-align:center;"><input type="button" id="envoi2" name="envoi" tabindex="8" value="Send" /></div>
   			</form>
+  			<div id="er-message2" class="er-message"></div>
     	</div>
         
     </div>
@@ -1528,13 +1523,48 @@ window.addEventListener('load', function() {
 	
    $(document).ready(function() {
 	
-	$.localScroll();
-	
-	$(".blank").delay(1000).fadeOut(300);
-	$("#wrapper-head").delay(2000).animate({'opacity':'1'},500);
-	$("#wrapper-logo").delay(3200).animate({'opacity':'1'},300);
-	$("#wrapper-plus").delay(3200).animate({'opacity':'1'},300);
-});
+		$.localScroll();
+		
+		$(".blank").delay(1000).fadeOut(300);
+		$("#wrapper-head").delay(2000).animate({'opacity':'1'},500);
+		$("#wrapper-logo").delay(3200).animate({'opacity':'1'},300);
+		$("#wrapper-plus").delay(3200).animate({'opacity':'1'},300);
+
+		$("#envoi1").click(function(event){		
+			var data = {};
+			data.name= $("#nom1").val();
+			data.email=$("#email1").val();
+			data.message = $("#message1").val();
+			$.ajax({url:"/mail",data:JSON.stringify(data),type:'POST', contentType:'application/json'})			
+            .done(function (data) {
+		        //do something useful with server returned data
+		        console.log(data);
+		    })
+		    .fail(function (response, status) {
+		        //handle error response
+		    })
+		    .always(function(){  
+		      $("#er-message1").text("Thank you. We will contact you shortly.")
+		    });				
+        });
+        $("#envoi2").click(function(event){		
+			var data = {};
+			data.name= $("#nom2").val();
+			data.email=$("#email2").val();
+			data.message = $("#message2").val();
+			$.ajax({url:"/mail",data:JSON.stringify(data),type:'POST', contentType:'application/json'})			
+            .done(function (data) {
+		        //do something useful with server returned data
+		        console.log(data);
+		    })
+		    .fail(function (response, status) {
+		        //handle error response
+		    })
+		    .always(function(){  
+		      $("#er-message2").text("Thank you. We will contact you shortly.")
+		    });				
+        });
+	});
 
 $(function() {
 	var bar = $('#wrapper-head');
