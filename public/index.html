@@ -155,11 +155,11 @@ html,body{
 	background-image: url(IMG/plus.svg);
 	background-repeat:no-repeat;
 	position:absolute;
-	width:32px;
-	height:32px;
+	width:64px;
+	height:64px;
 	left:50%;
 	margin-left:450px;
-	z-index:5;
+	z-index:101;
 	top:60px;
 	cursor:pointer;
 	opacity:0;
@@ -304,11 +304,11 @@ html,body{
 	background-image: url(IMG/cross.svg);
 	background-repeat:no-repeat;
 	position:absolute;
-	width:32px;
-	height:32px;
+	width:64px;
+	height:64px;
 	left:50%;
 	margin-left:450px;
-	z-index:11;
+	z-index:102;
 	bottom:10%;
 	cursor:pointer;
 	opacity:1;
@@ -1561,7 +1561,7 @@ $(function() {
 
 var SS = document.getElementById('wrapper-plus');
 
-SS.addEventListener('click', function() {
+$(document).on('touchend mouseout', '#wrapper-plus', function() {
              $("#main-wrapper-menu").animate({'height':'100%'},500);
              $(".recent-post").delay(500).fadeIn(500);
              $(".category-post").delay(500).fadeIn(500);
@@ -1570,7 +1570,7 @@ SS.addEventListener('click', function() {
 
 var WC = document.getElementById('wrapper-cross');
 
-WC.addEventListener('click', function() {
+$(document).on('touchend mouseout', '#wrapper-cross', function() {
              $("#main-wrapper-menu").animate({'height':'0'},500);
 			 $(".recent-post").fadeOut(250);
 		     $(".category-post").fadeOut(250);
