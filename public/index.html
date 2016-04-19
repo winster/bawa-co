@@ -1203,6 +1203,9 @@ input,textarea {width:258px;}
 #wrapper-menu{margin-top:-17.5%;}
 }
 
+@media (max-height: 650px) and (max-width: 600px) {
+#wrapper-menu {margin-top: -52.5%;}
+}
 
 </style>
 
@@ -1214,25 +1217,30 @@ input,textarea {width:258px;}
   <div id="wrapper-cross"></div>
 	<div id="wrapper-menu">
 	
-    <div class="recent-post text-part-menutab">
-        <ul>
-        <li><div id="recent-post-title">Our recent post</div></li>
-    	<li><div id="recent-post-1"><a href="spore-post1.html">Post a youtube video</a></div></li>
-		<li><div id="recent-post-2"><a href="spore-post2.html">Post an animated image</a></div></li>
-		<li><div id="recent-post-3"><a href="spore-post5.html">Post featured image</a></div></li>
-		<li><div id="recent-post-4"><a href="spore-post3.html">Auto-resized image</a></div></li>
-        </ul>
-    </div>
-    
-	<div class="category-post text-part-menutab">
-    	<div id="line-category-post"></div>
-        <ul>
-        <li><div id="category-post-title">Categories post</div></li>
-    	<li><div id="category-post-1"><a href="spore-cat-video.html">Video articles</a></div></li>
-		<li><div id="category-post-2"><a href="spore-cat-hotpost.html">Hot articles</a></div></li>
-		<li><div id="category-post-3"><a href="spore-cat-image.html">Images</a></div></li>
-        </ul>
-    </div>
+	    <div class="recent-post text-part-menutab">
+	        <div id="wrapper-A4a" class="wow bounceInRight" data-wow-offset="10">
+			    	
+			    <div id="A4a-title-1">Want to contact us?<br><span style="color:#CCC;">Shoot your question right here.</span></div>  
+		        
+		    </div>
+	    </div>
+	    
+		<div class="category-post text-part-menutab">
+	    	<div id="line-category-post"></div>
+	    		<div id = "conteneur">
+			
+		 			<form id="contact" method="post" action="#">
+			 				<div id="er-message"></div>
+		    			<fieldset>
+							<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
+							<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
+							<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+						</fieldset>
+		 
+						<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
+		  			</form>
+		    	</div>
+	    </div>
     
     </div>
 </div>
