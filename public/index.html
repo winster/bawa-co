@@ -1218,10 +1218,10 @@ input,textarea {width:258px;}
 	<div id="wrapper-menu">
 	
 	    <div class="recent-post text-part-menutab">
-	        <div id="wrapper-A4a" class="wow bounceInRight" data-wow-offset="10">
-			    	
-			    <div id="A4a-title-1">Want to contact us?<br><span style="color:#CCC;">Shoot your question right here.</span></div>  
-		        
+	        <div id="wrapper-A4a" class="wow bounceInRight" data-wow-offset="10">			    	
+			    <div id="A4a-title-1">Want to contact us?<br>
+			    	<span style="color:#CCC;">Shoot your question right here.</span>
+			    </div>  		        
 		    </div>
 	    </div>
 	    
@@ -1559,7 +1559,7 @@ $(function() {
 
 var SS = document.getElementById('wrapper-plus');
 
-$(document).on('touchend mouseout', '#wrapper-plus', function() {
+$(document).on('touchend click', '#wrapper-plus', function() {
              $("#main-wrapper-menu").animate({'height':'100%'},500);
              $(".recent-post").delay(500).fadeIn(500);
              $(".category-post").delay(500).fadeIn(500);
@@ -1568,7 +1568,7 @@ $(document).on('touchend mouseout', '#wrapper-plus', function() {
 
 var WC = document.getElementById('wrapper-cross');
 
-$(document).on('touchend mouseout', '#wrapper-cross', function() {
+$(document).on('touchend click', '#wrapper-cross', function() {
              $("#main-wrapper-menu").animate({'height':'0'},500);
 			 $(".recent-post").fadeOut(250);
 		     $(".category-post").fadeOut(250);
@@ -1954,7 +1954,7 @@ $(document).on('touchend mouseout', '#main-page4', function(event){
         }
 });*/
 
-$(document).on('touchstart click', '#wrapper-learnmore', function(event){
+$(document).on('touchend click', '#wrapper-learnmore', function(event){
         event.stopPropagation();
         event.preventDefault();
         //if(event.handled !== true) {
