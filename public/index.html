@@ -319,7 +319,7 @@ html,body{
 #A2{
 	position:relative;
 	width:100%;
-	min-height:250px;
+	min-height:150px;
 	z-index:1;
 }
 
@@ -329,7 +329,7 @@ html,body{
 	width:550px;
 	height:90px;
 	top:50%;
-	margin-top:-45px;
+	/*margin-top:-45px;*/
 	left:50%;
 	margin-left:-275px;
 	z-index:3;
@@ -912,7 +912,7 @@ iframe {
 	height:100px;
 	z-index:1;
     background-color:#FFF;
-	padding-bottom:50px;
+	/*padding-bottom:50px;*/
 	
 }
 
@@ -920,7 +920,7 @@ iframe {
 	position:absolute;
 	width:600px;
 	margin-left:-300px;
-	height:100px;
+	/*height:100px;*/
 	left:50%;
 }
 
@@ -1226,20 +1226,18 @@ input,textarea {width:258px;}
 	    </div>
 	    
 		<div class="category-post text-part-menutab">
-	    	<div id="line-category-post"></div>
-	    		<div id = "conteneur">
-			
-		 			<form id="contact" method="post" action="#">
-			 				<div id="er-message"></div>
-		    			<fieldset>
-							<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
-							<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
-							<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
-						</fieldset>
-		 
-						<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
-		  			</form>
-		    	</div>
+    		<div id = "conteneur">			
+	 			<form id="contact" method="post" action="#">
+		 			<div id="er-message"></div>
+	    			<fieldset>
+						<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
+						<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
+						<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+					</fieldset>
+	 
+					<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
+	  			</form>
+	    	</div>
 	    </div>
     
     </div>
@@ -1289,7 +1287,7 @@ input,textarea {width:258px;}
 
 <div id="A2">
     
-    <div id="text-2" class="wow fadeIn" data-wow-offset="10">At Bawali Creative Solutions, we work on ideas that connect people. Checkout a few of our products.</div>
+    <div id="text-2" class="wow fadeIn" data-wow-offset="10">"At Bawali Creative Solutions, we work on ideas that connect people. "</div>
     
 </div>
     
@@ -1942,7 +1940,7 @@ $(document).on('touchend mouseout', '#main-page4', function(event){
 
 /*BUTTON HEADER LEARN MORE*/
 
-$(document).on('touchstart mouseover', '#wrapper-learnmore', function(event){
+/*$(document).on('touchstart mouseover', '#wrapper-learnmore', function(event){
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
@@ -1954,20 +1952,27 @@ $(document).on('touchstart mouseover', '#wrapper-learnmore', function(event){
         } else {
             return false;
         }
-});
+});*/
 
-$(document).on('touchend mouseout', '#wrapper-learnmore', function(event){
+$(document).on('touchstart click', '#wrapper-learnmore', function(event){
         event.stopPropagation();
         event.preventDefault();
-        if(event.handled !== true) {
+        //if(event.handled !== true) {
 			 
 			 $(".bouton-learnmore").stop().css({'background-color':'transparent'});
 		     $(".text-learnmore").stop().css({'color':'#FFF'},250);
 			 
             event.handled = true;
-        } else {
+
+            $("#text-2").css({'visibility':'visible'},250);
+            $('html,body').animate({
+		        scrollTop: $("#A2").offset().top},
+		        'slow');
+
+
+        /*} else {
             return false;
-        }
+        }*/
 });
 
 	</script>
